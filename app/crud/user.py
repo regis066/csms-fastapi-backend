@@ -62,3 +62,6 @@ class CRUDUser:
 
     def hash_password(self, password: str) -> str:
         """Hash a password for storing in the database."""
+
+
+user_crud = CRUDUser(User)
