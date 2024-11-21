@@ -62,6 +62,7 @@ class CRUDUser:
 
     def hash_password(self, password: str) -> str:
         """Hash a password for storing in the database."""
+        return pwd_context.hash(password)
 
 
 user_crud = CRUDUser(User)

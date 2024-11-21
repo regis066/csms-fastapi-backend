@@ -1,6 +1,6 @@
 # app/services/auth_service.py
 
-from app.crud import user as user_crud
+from app.crud.user import user_crud
 from app.models.user import User
 from app.schemas.user import UserCreate, UserResponse
 from app.core.security import hash_password, verify_password
@@ -19,6 +19,6 @@ def create_user(db: Session, user: UserCreate) -> UserResponse:
 def authenticate_user(db: Session, email: str, password: str) -> User:
     """Authenticate a user with email and password."""
     user = user_crud.get_by_email(db, email=email)
-    if user and verify_password(password, user.password):
+    if user and verify_password(password, user.password_hash):
         return user
     return None
